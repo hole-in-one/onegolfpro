@@ -1,3 +1,4 @@
+.DS_Store
 .htaccess
 wp-config-local.php
 wp-config-staging.php
