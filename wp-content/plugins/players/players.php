@@ -47,6 +47,7 @@ add_action('init', 'academy_register_players');
 function academy_metabox_stats( $post )
 {
   $values = get_post_custom( $post->ID );
+  $player_age = isset( $values['player_age'] ) ? esc_attr( $values['player_age'][0] ) : '';
   $home_town = isset( $values['home_town'] ) ? esc_attr( $values['home_town'][0] ) : '';
   $date_joined = isset( $values['date_joined'] ) ? esc_attr( $values['date_joined'][0] ) : '';
   $career_highlights = isset( $values['career_highlights'] ) ? esc_attr( $values['career_highlights'][0] ) : '';
@@ -54,6 +55,11 @@ function academy_metabox_stats( $post )
   $fb_link = isset( $values['fb_link'] ) ? esc_attr( $values['fb_link'][0] ) : '';
   wp_nonce_field( 'academy_metabox_nonce', 'metabox_nonce' );
   ?>
+  <p>
+  <label for="player_age"><strong>Age:</strong></label>
+  <br>
+  <input type="text" name="player_age" id="player_age" value="<?php echo $player_age; ?>" style="width:85%;"/>
+  </p>
   <p>
   <label for="home_town"><strong>Hometown:</strong></label>
   <br>
@@ -105,6 +111,7 @@ function save_player_info()
 {
   global $post;
 
+  update_post_meta($post->ID, "player_age", $_POST["player_age"]);
   update_post_meta($post->ID, "date_joined", $_POST["date_joined"]);
   update_post_meta($post->ID, "home_town", $_POST["home_town"]);
   update_post_meta($post->ID, "career_highlights", $_POST["career_highlights"]);
