@@ -47,7 +47,7 @@ $options = get_option( 'mx_theme_settings' );
     $date_joined        = get_post_meta(get_the_ID(), 'date_joined', 'true');
     $career_highlights  = get_post_meta(get_the_ID(), 'career_highlights', 'true');
     $bio .= strlen($home_town) > 0 ? '<section><h1>Hometown:</h1><p>' . $home_town . '</p></section>': '';
-    $bio .= strlen($date_joined) > 0 ? '<section><h1>Date Joined:</h1><time datetime="' . $date_joined .'">' . date('d F, Y', strtotime($date_joined)) . '</time></section>': '';
+    $bio .= strlen($date_joined) > 0 ? '<section><h1>Date Joined:</h1><time datetime="' . $date_joined .'">' . date('d F Y', strtotime($date_joined)) . '</time></section>': '';
     $bio .= strlen($career_highlights) > 0 ? '<section><h1>Career Highlights:</h1><p>' . $career_highlights . '</p></section>': '';
     $display_bio  = strlen($bio) > 0 ? '<aside class="player-bio"><header><h1>Quick Info</h1></header>' . $bio . '</aside>' : '';
     if ( strlen($display_bio) > 0)
