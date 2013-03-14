@@ -47,20 +47,22 @@ add_action('init', 'academy_register_players');
 function academy_metabox_stats( $post )
 {
   $values = get_post_custom( $post->ID );
-  $date_joined = isset( $values['home_town'] ) ? esc_attr( $values['home_town'][0] ) : '';
-  $career_highlights = isset( $values['date_joined'] ) ? esc_attr( $values['date_joined'][0] ) : '';
-  $home_town = isset( $values['career_highlights'] ) ? esc_attr( $values['career_highlights'][0] ) : '';
+  $home_town = isset( $values['home_town'] ) ? esc_attr( $values['home_town'][0] ) : '';
+  $date_joined = isset( $values['date_joined'] ) ? esc_attr( $values['date_joined'][0] ) : '';
+  $career_highlights = isset( $values['career_highlights'] ) ? esc_attr( $values['career_highlights'][0] ) : '';
+  $twitter_link = isset( $values['twitter_link'] ) ? esc_attr( $values['twitter_link'][0] ) : '';
+  $fb_link = isset( $values['fb_link'] ) ? esc_attr( $values['fb_link'][0] ) : '';
   wp_nonce_field( 'academy_metabox_nonce', 'metabox_nonce' );
   ?>
-  <p>
-  <label for="date_joined"><strong>Date Joined:</strong></label>
-  <br>
-  <input type="text" name="date_joined" id="date_joined" value="<?php echo $date_joined; ?>" style="width:85%;"/>
-  </p>
   <p>
   <label for="home_town"><strong>Hometown:</strong></label>
   <br>
   <input type="text" name="home_town" id="home_town" value="<?php echo $home_town; ?>" style="width:85%;"/>
+  </p>
+  <p>
+  <label for="date_joined"><strong>Date Joined:</strong></label>
+  <br>
+  <input type="text" name="date_joined" id="date_joined" value="<?php echo $date_joined; ?>" style="width:85%;"/>
   </p>
   <p>
   <label for="career_highlights"><strong>Career Highlights So Far:</strong></label>
