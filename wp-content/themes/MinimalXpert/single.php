@@ -39,43 +39,81 @@ $options = get_option( 'mx_theme_settings' );
     <?php endif; ?>
     <!-- END post-entry-meta -->
 
-    <?php
+  <?php
+  if ( is_singular( 'players' ) )
+  {
+    $display_bio = $bio = '';
+    $home_town          = get_post_meta(get_the_ID(), 'home_town', 'true');
+    $date_joined        = get_post_meta(get_the_ID(), 'date_joined', 'true');
+    $career_highlights  = get_post_meta(get_the_ID(), 'career_highlights', 'true');
+    $bio .= strlen($home_town) > 0 ? '<section><h1>Hometown:</h1><p>' . $home_town . '</p></section>': '';
+    $bio .= strlen($date_joined) > 0 ? '<section><h1>Date Joined:</h1><time datetime="' . $date_joined .'">' . date('d F, Y', strtotime($date_joined)) . '</time></section>': '';
+    $bio .= strlen($career_highlights) > 0 ? '<section><h1>Career Highlights:</h1><p>' . $career_highlights . '</p></section>': '';
+    $display_bio  = strlen($bio) > 0 ? '<aside class="player-bio"><header><h1>Quick Info</h1></header>' . $bio . '</aside>' : '';
+    if ( strlen($display_bio) > 0)
+    {
+      echo '<article>';
+      echo $display_bio;
+      echo '<section class="player-profile">';
+      if ( has_post_thumbnail() )
+      {
+        if ($options['disable_single_image'] != true)
+        {
+          echo '<div id="single-featured-image">';
+          the_post_thumbnail('post-image');
+          echo '</div>';
+        }
+      }
+      the_content();
+      echo '</section>';
+      echo '</article>';
+    }else{
+      if ( has_post_thumbnail() )
+      {
+        if ($options['disable_single_image'] != true)
+        {
+          echo '<div id="single-featured-image">';
+          the_post_thumbnail('post-image');
+          echo '</div>';
+        }
+      }
+      the_content();
+    }
+  }else{
+
     if ( has_post_thumbnail() )
     {
       if ($options['disable_single_image'] != true)
       {
-    ?>
-        <div id="single-featured-image">
-          <?php the_post_thumbnail('post-image'); ?>
-        </div>
-        <!-- END single-featured-image -->
-    <?php
+        echo '<div id="single-featured-image">';
+        the_post_thumbnail('post-image');
+        echo '</div>';
       }
     }
-    ?>
+    the_content();
+  }
+  ?>
+  <div class="clear"></div>
+  <?php wp_link_pages('before=<div id="post-page-navigation">&after=</div>'); ?>
 
-    <?php the_content(); ?>
-    <div class="clear"></div>
-    <?php wp_link_pages('before=<div id="post-page-navigation">&after=</div>'); ?>
-
-    <?php
-    if ($options['disable_single_pagination'] != true)
-    {
-    ?>
-      <div id="single-nav" class="clearfix">
-        <div id="single-nav-left"><?php previous_post_link('%link', 'Last Post', TRUE); ?></div>
-        <div id="single-nav-right"><?php next_post_link('%link', 'Next Post', TRUE); ?></div>
-      </div>
-      <!-- END single-nav -->
-    <?php
-    }
-    ?>
-
-    <div class="post-entry-bottom">
-      <?php the_tags('<div class="post-tags">',' ','</div>'); ?>
-      <!-- END post-category -->
+  <?php
+  if ($options['disable_single_pagination'] != true)
+  {
+  ?>
+    <div id="single-nav" class="clearfix">
+      <div id="single-nav-left"><?php previous_post_link('%link', 'Last Post', TRUE); ?></div>
+      <div id="single-nav-right"><?php next_post_link('%link', 'Next Post', TRUE); ?></div>
     </div>
-    <!-- END post-entry-bottom -->
+    <!-- END single-nav -->
+  <?php
+  }
+  ?>
+
+  <div class="post-entry-bottom">
+    <?php the_tags('<div class="post-tags">',' ','</div>'); ?>
+    <!-- END post-category -->
+  </div>
+  <!-- END post-entry-bottom -->
 
   </div>
   <!-- END post-entry -->
