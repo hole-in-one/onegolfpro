@@ -1,0 +1,78 @@
+#mailform div {
+  margin: 0 0 20px 0;
+  font-size: 14px;
+}
+#mailform div.form-actions {
+  margin: 0;
+}
+#mailform div label {
+  display: block;
+  margin: 0 0 5px 0;
+  font-weight: bold;
+}
+#mailform div.check label {
+  display: inline;
+  font-weight: normal;
+}
+#mailform div.radio ul li label {
+  display: inline;
+  font-weight: normal;
+}
+#mailform div input.form-text, #mailform div textarea {
+  display: block;
+  width: 50%;
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  background: #f5f5f5;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.05);
+  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.05);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.05);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+#mailform div input.form-text:focus {
+  border: 1px solid #ccc;
+  background: #fff;
+}
+#mailform div textarea {
+  height: 150px;
+}
+#mailform div select {
+  min-width: 25%;
+  margin: 0;
+}
+#mailform div.radio ul {
+  margin-top: 5px;
+}
+#mailform div.radio ul li {
+  margin: 0 0 5px 0;
+}
+#mailform div.radio ul li:last-child {
+  margin: 0;
+}
+#mailform div p.form-help {
+  margin: 5px 0 0 0;
+  font-size: 12px;
+  color: #999;
+}
+#mailform input[type="submit"] {
+  margin: 0;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  background: #eee;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+#mailform input[type="submit"]:hover, #mailform input[type="submit"]:focus {
+  border: 1px solid #bbb;
+  background: #e5e5e5;
+}
+#mailform input[type="submit"]:active {
+  border: 1px solid #ccc;
+  background: #eee;
+}
