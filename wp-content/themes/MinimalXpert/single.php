@@ -11,7 +11,8 @@ $options = get_option( 'mx_theme_settings' );
 
         <?php
         if ( is_singular( 'players' ) ):
-        $player_id = $post->ID; // get ID of current post
+        $fb_link      = get_post_meta(get_the_ID(), 'fb_link', 'true');
+        $twitter_link = get_post_meta(get_the_ID(), 'twitter_link', 'true');
         ?>
 
           <nav class="player-links-out clear">
@@ -20,12 +21,12 @@ $options = get_option( 'mx_theme_settings' );
             </header>
             <ul>
               <li>
-                <a href="<?php get_post_meta($player_id, 'fb_link', 'true'); ?>">
+                <a href="<?php echo $fb_link; ?>" target="_blank">
                   <img src="<?php bloginfo( 'template_directory' ) ?>/images/icons/fb.png" alt="Facebook">
                 </a>
               </li>
               <li>
-                <a href="<?php get_post_meta($player_id, 'twitter_link', 'true'); ?>">
+                <a href="<?php echo $twitter_link; ?>" target="_blank">
                   <img src="<?php bloginfo( 'template_directory' ) ?>/images/icons/twitter.png" alt="Twitter">
                 </a>
               </li>
