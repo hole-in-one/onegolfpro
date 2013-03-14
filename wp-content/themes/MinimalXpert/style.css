@@ -1080,7 +1080,7 @@ span.meta-comments {
 /* Players
 /*-----------------------------------------------------------------------------------*/
 .player-links-out {
-  border: 2px solid #F6F6F6;
+  border: 1px solid #F1F1F1;
   display: block;
   background-color: #F9F9F9;
   height: 28px;
@@ -1132,6 +1132,8 @@ span.meta-comments {
 /* Player profile & bio
 /*-----------------------------------------------------------------------------------*/
 .player-bio {
+  border-top: 1px solid #F1F1F1;
+  border-left: 1px solid #F1F1F1;
   background-color: #F9F9F9;
   -webkit-box-shadow: 2px 2px 3px #E1E1E1;
   -moz-box-shadow: 2px 2px 3px #E1E1E1;
